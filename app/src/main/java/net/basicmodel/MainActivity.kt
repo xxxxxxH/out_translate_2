@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.tencent.mmkv.MMKV
 import kotlinx.android.synthetic.main.layout_bottom.*
 import net.fragment.CommonFragment
 import net.fragment.TranslateFragment
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        MMKV.initialize(this)
         showPosition(0)
         initView()
     }

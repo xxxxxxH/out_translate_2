@@ -12,5 +12,10 @@ class Constant {
         const val TAG_TRANSLATE = "t"
         const val TAG_COLLECTION = "c"
         const val TAG_HISTORY = "h"
+        const val TYPE = "type"
+        const val TYPE_FROM = "f"
+        const val TYPE_TO = "t"
+        const val KEY_COLLECTION = "collection"
+        const val KEY_HISTORY = "history"
     }
 }
