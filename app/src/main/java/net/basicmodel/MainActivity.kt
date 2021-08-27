@@ -50,28 +50,56 @@ class MainActivity : AppCompatActivity() {
             } else {
                 ft.show(translateF!!)
             }
+            destroyFragment(0, ft)
         }
 
         if (position == 1) {
             collectF = fm.findFragmentByTag(Constant.TAG_COLLECTION) as CommonFragment?
             if (collectF == null) {
-                collectF = CommonFragment()
+                collectF = CommonFragment(Constant.TAG_COLLECTION)
                 ft.add(R.id.content, collectF!!, Constant.TAG_COLLECTION)
             } else {
                 ft.show(collectF!!)
             }
+            destroyFragment(1, ft)
         }
 
         if (position == 2) {
             historyF = fm.findFragmentByTag(Constant.TAG_HISTORY) as CommonFragment?
             if (historyF == null) {
-                historyF = CommonFragment()
+                historyF = CommonFragment(Constant.TAG_HISTORY)
                 ft.add(R.id.content, historyF!!, Constant.TAG_HISTORY)
             } else {
                 ft.show(historyF!!)
             }
+            destroyFragment(2, ft)
         }
         ft.commit()
+    }
+
+    private fun destroyFragment(position: Int, ft: FragmentTransaction) {
+        when (position) {
+            0 -> {
+                if (collectF != null) {
+                    ft.remove(collectF!!)
+                }
+                if (historyF != null) {
+                    ft.remove(historyF!!)
+                }
+            }
+
+            1 -> {
+                if (historyF != null) {
+                    ft.remove(historyF!!)
+                }
+            }
+
+            2 -> {
+                if (collectF != null) {
+                    ft.remove(collectF!!)
+                }
+            }
+        }
     }
 
     private fun hideAll(ft: FragmentTransaction) {
@@ -86,19 +114,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setColor(position: Int){
-        when(position){
-            0->{
+    private fun setColor(position: Int) {
+        when (position) {
+            0 -> {
                 tv1.setTextColor(Color.RED)
                 tv2.setTextColor(Color.BLACK)
                 tv3.setTextColor(Color.BLACK)
             }
-            1->{
+            1 -> {
                 tv1.setTextColor(Color.BLACK)
                 tv2.setTextColor(Color.RED)
                 tv3.setTextColor(Color.BLACK)
             }
-            2->{
+            2 -> {
                 tv1.setTextColor(Color.BLACK)
                 tv2.setTextColor(Color.BLACK)
                 tv3.setTextColor(Color.RED)
